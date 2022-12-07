@@ -7,21 +7,23 @@ import axios from "axios";
 
 function Navbars() {
   const isLoggedIn = Boolean(localStorage.getItem("session"));
+  // localStorage.setItem('username', ) 
+  // const usernames = localStorage.getItem('username');
   const handleLogout = () => {
-    axios
-      .delete(
-        `${process.env.REACT_APP_BASE_URL}authentication/session?api_key=${process.env.REACT_APP_TMDB_KEY}`,
-        {
-          data: {
-            session_id: localStorage.getItem("session"),
-          },
-        }
-      )
-      .then((res) => {
-        console.log(res);
-        localStorage.removeItem("session");
-        window.location.assign("/profile");
-      });
+   axios
+     .delete(
+       `${process.env.REACT_APP_BASE_URL}authentication/session?api_key=${process.env.REACT_APP_TMDB_KEY}`,
+       {
+         data: {
+           session_id: localStorage.getItem("session"),
+         },
+       }
+     )
+     .then((res) => {
+       console.log(res);
+       localStorage.removeItem("session");
+       window.location.assign("/profile");
+     });
   };
   if (isLoggedIn) {
     return (
@@ -40,7 +42,7 @@ function Navbars() {
                 navbarScroll
               >
                 <Nav.Link href="/profile">Home</Nav.Link>
-                <Nav.Link href="/profile"></Nav.Link>
+                <Nav.Link href="/profile">{usernames}</Nav.Link>
                 <Button variant="outline-success" onClick={handleLogout}>
                   Log out
                 </Button>

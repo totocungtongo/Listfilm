@@ -10,9 +10,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element:
-      <>
         <App />
-      </>
     ,
 
     errorElement: <p style={{color:'white'}}>Page Not Found</p>,

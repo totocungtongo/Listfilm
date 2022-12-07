@@ -23,7 +23,6 @@ function App() {
   useEffect(() => {
     getData();
   }, []);
-
   return (
     <div className="App">
       <Navbars></Navbars>
@@ -36,7 +35,7 @@ function App() {
                   <Card.Img
                     className="card-img-top"
                     variant="top"
-                    src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+                    src={`${process.env.REACT_APP_IMG_URL}${item.poster_path}`}
                     alt="test"
                     style={{ width: "100%" }}
                   />
@@ -46,7 +45,9 @@ function App() {
                       movie id:{item.id}
                     </Card.Text>
                     <Card.Text className="card-text">{item.overview}</Card.Text>
-                    <Card.Text className="card-text">Watched: {parseInt(item.popularity)} time</Card.Text>
+                    <Card.Text className="card-text">
+                      Watched: {parseInt(item.popularity)} time
+                    </Card.Text>
 
                     <a
                       href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"
