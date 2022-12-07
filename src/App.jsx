@@ -1,5 +1,5 @@
 import "./App.css";
-import Axios from "axios";
+import axios from "axios";
 import React, { useState, useEffect } from "react";
 // import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
@@ -12,7 +12,7 @@ import Container from "react-bootstrap/Container";
 function App() {
   const [data1, setData1] = useState([]);
   const getData = () => {
-    Axios({
+    axios({
       method: "get",
       url: "https://api.themoviedb.org/3/movie/popular?api_key=e37c79c53f9d7b138c1790e896ed6cb1&language=en-",
     }).then(function (response) {

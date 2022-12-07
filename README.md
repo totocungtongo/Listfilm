@@ -9,5 +9,8 @@ Step:
    - yup
    - react-router-dom
    - axios
-3. Membuat navbar dan design card
+3. Membuat component navbar dan mendesign card
 4. Mapping card dari api
+5. Menambahkan page login
+6. Membuat page login berfungsi
+7. Design page login
