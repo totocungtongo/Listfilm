@@ -22,9 +22,13 @@ Milestone 1
 ● User bisa melihat list movie pada web ✅
 ● Informasi movie yang harus ditampilkan adalah:
        a. movie id ✅
+       
        b. title ✅
+       
        c. image ✅ 
+       
        d. popularity ✅ --> watched itu pakai popularity
+       
        e. overview ✅ --> description film menggunakan overview
 3. Commit hasil code ke git 
 
