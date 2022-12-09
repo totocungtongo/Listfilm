@@ -19,8 +19,11 @@ MILESTONE
 Milestone 1
 1. Student harus menggunakan React.js sebagai Frontend Framework ✅
 2. Website yang akan student buat harus memenuhi requirement berikut:
+
 ● User bisa melihat list movie pada web ✅
+
 ● Informasi movie yang harus ditampilkan adalah:
+      
        a. movie id ✅
        
        b. title ✅
