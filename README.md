@@ -1,5 +1,7 @@
 NAMA = Abdurrahman al jufri
 BATCH = 10
+
+DEPLOYMENT = https://magical-rugelach-f79589.netlify.app
 Step:
 
 1. Init project
