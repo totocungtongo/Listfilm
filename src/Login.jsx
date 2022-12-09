@@ -36,7 +36,7 @@ function Login() {
               `${process.env.REACT_APP_BASE_URL}authentication/token/validate_with_login?api_key=${process.env.REACT_APP_TMDB_KEY}`,
               {
                 username: values.username, // priambudi.lintang (bang pinjem ya buat testing)
-                password: values.password, // 
+                password: values.password, // Fah63FaWT5e$4di
                 request_token: requestToken,
               }
             )
@@ -92,7 +92,12 @@ function Login() {
           <br />
         </Form.Group>
         <Form.Group className="mb-3">
-          <Form.Label htmlFor="password">Password</Form.Label>
+          <Form.Label
+            htmlFor="password"
+            style={{ color: "white", fontSize: 20 }}
+          >
+            Password
+          </Form.Label>
           <Form.Control
             id="password"
             name="password"
