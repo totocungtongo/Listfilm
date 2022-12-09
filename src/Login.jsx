@@ -63,7 +63,7 @@ function Login() {
   return (
     <>
       <Navbars />
-      <Form onSubmit={formik.handleSubmit}>
+      <Form onSubmit={formik.handleSubmit} className="form">
         <Form.Group className="mb-3">
           <Form.Label
             style={{ color: "white", fontSize: 20 }}
@@ -109,7 +109,7 @@ function Login() {
           />
         </Form.Group>
         {formik.touched.password && formik.errors.password ? (
-          <div>{formik.errors.password}</div>
+          <div style={{ color: "red" }}>{formik.errors.password}</div>
         ) : null}
         <br />
         <Button variant="primary" type="submit">

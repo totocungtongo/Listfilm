@@ -6,25 +6,24 @@ import Navbar from "react-bootstrap/Navbar";
 import axios from "axios";
 // import React, { useState, useEffect } from "react";
 
-
 function Navbars() {
   const isLoggedIn = Boolean(localStorage.getItem("session"));
   const usernames = localStorage.getItem("usernames");
   const handleLogout = () => {
-   axios
-     .delete(
-       `${process.env.REACT_APP_BASE_URL}authentication/session?api_key=${process.env.REACT_APP_TMDB_KEY}`,
-       {
-         data: {
-           session_id: localStorage.getItem("session"),
-         },
-       }
-     )
-     .then((res) => {
-       console.log(res);
-       localStorage.clear();
-       window.location.assign("/profile");
-     });
+    axios
+      .delete(
+        `${process.env.REACT_APP_BASE_URL}authentication/session?api_key=${process.env.REACT_APP_TMDB_KEY}`,
+        {
+          data: {
+            session_id: localStorage.getItem("session"),
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+        localStorage.clear();
+        window.location.assign("/");
+      });
   };
   if (isLoggedIn) {
     return (
@@ -42,8 +41,10 @@ function Navbars() {
                 style={{ maxHeight: "100px" }}
                 navbarScroll
               >
-                <Nav.Link href="/profile">Home</Nav.Link>
-                <Nav.Link href="/profile">{usernames}</Nav.Link>
+                <Nav.Link href="/">Home</Nav.Link>
+                <Nav.Link href="/" disabled style={{ color: "white" }}>
+                  {usernames}
+                </Nav.Link>
                 <Button variant="outline-success" onClick={handleLogout}>
                   Log out
                 </Button>
@@ -78,7 +79,7 @@ function Navbars() {
                 style={{ maxHeight: "100px" }}
                 navbarScroll
               >
-                <Nav.Link href="/profile">Home</Nav.Link>
+                <Nav.Link href="/">Home</Nav.Link>
                 <Button variant="outline-success" href="./login">
                   Log in
                 </Button>
@@ -98,7 +99,6 @@ function Navbars() {
       </>
     );
   }
-  
 }
 
 export default Navbars;
