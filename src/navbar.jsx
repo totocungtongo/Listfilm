@@ -4,11 +4,12 @@ import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import axios from "axios";
+// import React, { useState, useEffect } from "react";
+
 
 function Navbars() {
   const isLoggedIn = Boolean(localStorage.getItem("session"));
-  // localStorage.setItem('username', ) 
-  // const usernames = localStorage.getItem('username');
+  const usernames = localStorage.getItem("usernames");
   const handleLogout = () => {
    axios
      .delete(
@@ -21,7 +22,7 @@ function Navbars() {
      )
      .then((res) => {
        console.log(res);
-       localStorage.removeItem("session");
+       localStorage.clear();
        window.location.assign("/profile");
      });
   };
@@ -97,6 +98,7 @@ function Navbars() {
       </>
     );
   }
+  
 }
 
 export default Navbars;
