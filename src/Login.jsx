@@ -34,7 +34,7 @@ function Login() {
               `${process.env.REACT_APP_BASE_URL}authentication/token/validate_with_login?api_key=${process.env.REACT_APP_TMDB_KEY}`,
               {
                 username: values.username, // priambudi.lintang (bang pinjem ya buat testing)
-                password: values.password, // Fah63FaWT5e$4di
+                password: values.password, 
                 request_token: requestToken,
               }
             )
