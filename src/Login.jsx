@@ -22,8 +22,6 @@ function Login() {
     }),
     onSubmit: (values) => {
       console.log(values);
-      const userNames = values.username;
-       localStorage.setItem("usernames", userNames);
       axios
         .get(
           `${process.env.REACT_APP_BASE_URL}authentication/token/new?api_key=${process.env.REACT_APP_TMDB_KEY}`
@@ -54,11 +52,18 @@ function Login() {
                   const sessionID = res.data.session_id;
                   console.log(sessionID);
                   localStorage.setItem("session", sessionID);
-                  window.location.assign("/profile");
+                  axios.get(
+                    `${process.env.REACT_APP_BASE_URL}account?api_key=${process.env.REACT_APP_TMDB_KEY}&session_id=${sessionID}`
+                  ).then((des) =>{
+                    const userNames = des.data.username;
+                    console.log(userNames)
+                    localStorage.setItem("usernames", userNames);
+                    window.location.assign("/profile");
+                  });
                 });
             });
-        });
-    },
+       });
+   },
   });
   return (
     <>
