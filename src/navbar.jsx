@@ -13,7 +13,7 @@ function Navbars() {
   var endUrl = "";
   var cName= "";
   const usernames = localStorage.getItem("usernames");
-  if (localStorage.getItem("profile") != "null") {
+  if (localStorage.getItem("profile") !== "null") {
     pP = localStorage.getItem("profile");
     urlImg = "https://image.tmdb.org/t/p/w200/";
     cName = "img-profile"
