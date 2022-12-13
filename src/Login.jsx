@@ -34,10 +34,13 @@ function Login() {
               `${process.env.REACT_APP_BASE_URL}authentication/token/validate_with_login?api_key=${process.env.REACT_APP_TMDB_KEY}`,
               {
                 username: values.username, // priambudi.lintang (bang pinjem ya buat testing)
-                password: values.password, 
+                password: values.password,
                 request_token: requestToken,
               }
             )
+            .catch(function (e) {
+              alert("username or password ar not valid");
+            })
             .then((res) => {
               const validatedRequestToken = res.data.request_token;
               console.log(validatedRequestToken);
@@ -52,21 +55,27 @@ function Login() {
                   const sessionID = res.data.session_id;
                   console.log(sessionID);
                   localStorage.setItem("session", sessionID);
-                  axios.get(
-                    `${process.env.REACT_APP_BASE_URL}account?api_key=${process.env.REACT_APP_TMDB_KEY}&session_id=${sessionID}`
-                  ).then((des) =>{
-                    const userNames = des.data.username;
-                    const avatar = des.data.avatar.gravatar.hash;
-                    const profilePicture = des.data.avatar.tmdb.avatar_path;
-                    localStorage.setItem("profile", profilePicture);
-                    localStorage.setItem("avatar", avatar);
-                    localStorage.setItem("usernames", userNames);
-                    window.location.assign("/profile");
-                  });
+                  axios
+                    .get(
+                      `${process.env.REACT_APP_BASE_URL}account?api_key=${process.env.REACT_APP_TMDB_KEY}&session_id=${sessionID}`
+                    )
+                    .then((des) => {
+                      const userNames = des.data.username;
+                      const avatar = des.data.avatar.gravatar.hash;
+                      const profilePicture = des.data.avatar.tmdb.avatar_path;
+                      localStorage.setItem("profile", profilePicture);
+                      localStorage.setItem("avatar", avatar);
+                      localStorage.setItem("usernames", userNames);
+                      if (localStorage.getItem("session")) {
+                        window.location.assign("/profile");
+                      } else {
+                        alert("err");
+                      }
+                    });
                 });
             });
-       });
-   },
+        });
+    },
   });
   return (
     <>

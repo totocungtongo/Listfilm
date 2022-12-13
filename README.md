@@ -18,7 +18,9 @@ Step:
 7. Design page login
 
 FITUR TAMBAHAN:
-1. Memunculkan avatar
+1. Menampilkan  avatar gravatar apabila login terjadi dan tidak mempunyai profile picture
+2. Menampilkan profile picture apabila user memiliki profile picture
+3. Menampilkan error alert apabila user memasukan password atau username yang salah
 
 MILESTONE
 Milestone 1
