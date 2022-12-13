@@ -8,8 +8,21 @@ import axios from "axios";
 
 function Navbars() {
   const isLoggedIn = Boolean(localStorage.getItem("session"));
-  const pP = localStorage.getItem("avatar")
+  var pP = "";
+  var urlImg = "";
+  var endUrl = "";
+  var cName= "";
   const usernames = localStorage.getItem("usernames");
+  if (localStorage.getItem("profile")) {
+    pP = localStorage.getItem("profile");
+    urlImg = "https://image.tmdb.org/t/p/w200/";
+    cName = "img-profile"
+  } else {
+    pP = localStorage.getItem("avatar");
+    urlImg = "https://secure.gravatar.com/avatar/";
+    endUrl = ".jpg?s=64";
+    cName = "img-avatar";
+  }
   const handleLogout = () => {
     axios
       .delete(
@@ -45,8 +58,8 @@ function Navbars() {
                 <Nav.Link href="/">Home</Nav.Link>
                 <Nav.Link href="/" disabled style={{ color: "white" }}>
                   <img
-                    className="img-avatar"
-                    src={`https://secure.gravatar.com/avatar/${pP}.jpg?s=64`}
+                    className={cName}
+                    src={`${urlImg}${pP}${endUrl}`}
                     alt=""
                   ></img>
                   {usernames}

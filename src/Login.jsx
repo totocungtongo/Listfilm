@@ -56,9 +56,10 @@ function Login() {
                     `${process.env.REACT_APP_BASE_URL}account?api_key=${process.env.REACT_APP_TMDB_KEY}&session_id=${sessionID}`
                   ).then((des) =>{
                     const userNames = des.data.username;
-                    const profilePicture = des.data.avatar.gravatar.hash;
-                    localStorage.setItem("avatar", profilePicture)
-                    // console.log(userNames)
+                    const avatar = des.data.avatar.gravatar.hash;
+                    const profilePicture = des.data.avatar.tmdb.avatar_path;
+                    localStorage.setItem("profile", profilePicture);
+                    localStorage.setItem("avatar", avatar);
                     localStorage.setItem("usernames", userNames);
                     window.location.assign("/profile");
                   });
