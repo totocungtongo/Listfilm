@@ -8,6 +8,7 @@ import axios from "axios";
 
 function Navbars() {
   const isLoggedIn = Boolean(localStorage.getItem("session"));
+  const pP = localStorage.getItem("avatar")
   const usernames = localStorage.getItem("usernames");
   const handleLogout = () => {
     axios
@@ -43,6 +44,11 @@ function Navbars() {
               >
                 <Nav.Link href="/">Home</Nav.Link>
                 <Nav.Link href="/" disabled style={{ color: "white" }}>
+                  <img
+                    className="img-avatar"
+                    src={`https://secure.gravatar.com/avatar/${pP}.jpg?s=64`}
+                    alt=""
+                  ></img>
                   {usernames}
                 </Nav.Link>
                 <Button variant="outline-success" onClick={handleLogout}>

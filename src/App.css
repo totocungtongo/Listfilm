@@ -55,3 +55,8 @@ background-color:#222;
   display: block;
   z-index: 999;
 }
+.img-avatar{
+  border-radius: 50%;
+  width: 13%;
+  margin: 0px 15px;
+}

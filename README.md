@@ -17,6 +17,9 @@ Step:
 6. Membuat page login berfungsi
 7. Design page login
 
+FITUR TAMBAHAN:
+1. Memunculkan avatar
+
 MILESTONE
 Milestone 1
 1. Student harus menggunakan React.js sebagai Frontend Framework ✅

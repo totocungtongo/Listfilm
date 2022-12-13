@@ -56,6 +56,8 @@ function Login() {
                     `${process.env.REACT_APP_BASE_URL}account?api_key=${process.env.REACT_APP_TMDB_KEY}&session_id=${sessionID}`
                   ).then((des) =>{
                     const userNames = des.data.username;
+                    const profilePicture = des.data.avatar.gravatar.hash;
+                    localStorage.setItem("avatar", profilePicture)
                     // console.log(userNames)
                     localStorage.setItem("usernames", userNames);
                     window.location.assign("/profile");
