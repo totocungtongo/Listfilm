@@ -66,11 +66,7 @@ function Login() {
                       localStorage.setItem("profile", profilePicture);
                       localStorage.setItem("avatar", avatar);
                       localStorage.setItem("usernames", userNames);
-                      if (localStorage.getItem("session")) {
-                        window.location.assign("/profile");
-                      } else {
-                        alert("err");
-                      }
+                      window.location.assign("/profile");                  
                     });
                 });
             });
