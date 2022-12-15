@@ -44,7 +44,9 @@ function Login() {
             )
             .catch(function (e) {
               setLoading(false);
-              alert("username or password ar not valid");
+              setTimeout(() => {
+                 alert("username or password ar not valid");
+              }, 300);
             })
             .then((res) => {
               const validatedRequestToken = res.data.request_token;
