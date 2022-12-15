@@ -5,8 +5,11 @@ import axios from "axios";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Navbars from "./navbar";
+import { useState } from "react";
+import Loader from "./spinner";
 
 function Login() {
+  const[loading, setLoading] = useState(false);
   const formik = useFormik({
     initialValues: {
       username: "",
@@ -29,6 +32,7 @@ function Login() {
         .then((response) => {
           const requestToken = response.data.request_token;
           console.log(requestToken);
+          setLoading(true);
           axios
             .post(
               `${process.env.REACT_APP_BASE_URL}authentication/token/validate_with_login?api_key=${process.env.REACT_APP_TMDB_KEY}`,
@@ -39,6 +43,7 @@ function Login() {
               }
             )
             .catch(function (e) {
+              setLoading(false);
               alert("username or password ar not valid");
             })
             .then((res) => {
@@ -66,69 +71,77 @@ function Login() {
                       localStorage.setItem("profile", profilePicture);
                       localStorage.setItem("avatar", avatar);
                       localStorage.setItem("usernames", userNames);
-                      window.location.assign("/profile");                  
+                      window.location.assign("/profile");  
+                      setTimeout(() => {
+                      setLoading(false);             
+                      }, 500);
                     });
-                });
+                 });
             });
         });
     },
   });
+
   return (
     <>
       <Navbars />
-      <Form onSubmit={formik.handleSubmit} className="form">
-        <Form.Group className="mb-3">
-          <Form.Label
-            style={{ color: "white", fontSize: 20 }}
-            htmlFor="username"
-          >
-            Username
-          </Form.Label>
-          <Form.Control
-            id="username"
-            name="username"
-            type="text"
-            placeholder="Enter username"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.username}
-          />
-          <Form.Text
-            className="text-muted"
-            style={{ color: "white", fontSize: 15 }}
-          >
-            We'll never share your email with anyone else.
-          </Form.Text>
-          {formik.touched.username && formik.errors.username ? (
-            <div style={{ color: "red" }}>{formik.errors.username}</div>
+      {loading ? (
+        <Loader />
+      ) : (
+        <Form onSubmit={formik.handleSubmit} className="form">
+          <Form.Group className="mb-3">
+            <Form.Label
+              style={{ color: "white", fontSize: 20 }}
+              htmlFor="username"
+            >
+              Username
+            </Form.Label>
+            <Form.Control
+              id="username"
+              name="username"
+              type="text"
+              placeholder="Enter username"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.username}
+            />
+            <Form.Text
+              className="text-muted"
+              style={{ color: "white", fontSize: 15 }}
+            >
+              We'll never share your email with anyone else.
+            </Form.Text>
+            {formik.touched.username && formik.errors.username ? (
+              <div style={{ color: "red" }}>{formik.errors.username}</div>
+            ) : null}
+            <br />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label
+              htmlFor="password"
+              style={{ color: "white", fontSize: 20 }}
+            >
+              Password
+            </Form.Label>
+            <Form.Control
+              id="password"
+              name="password"
+              type="password"
+              placeholder="Password"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.password}
+            />
+          </Form.Group>
+          {formik.touched.password && formik.errors.password ? (
+            <div style={{ color: "red" }}>{formik.errors.password}</div>
           ) : null}
           <br />
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Label
-            htmlFor="password"
-            style={{ color: "white", fontSize: 20 }}
-          >
-            Password
-          </Form.Label>
-          <Form.Control
-            id="password"
-            name="password"
-            type="password"
-            placeholder="Password"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.password}
-          />
-        </Form.Group>
-        {formik.touched.password && formik.errors.password ? (
-          <div style={{ color: "red" }}>{formik.errors.password}</div>
-        ) : null}
-        <br />
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
+        </Form>
+      )}
     </>
   );
 }
