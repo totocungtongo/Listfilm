@@ -24,6 +24,7 @@ function Login() {
         .required("Required"),
     }),
     onSubmit: (values) => {
+      setLoading(true);
       console.log(values);
       axios
         .get(
@@ -32,7 +33,6 @@ function Login() {
         .then((response) => {
           const requestToken = response.data.request_token;
           console.log(requestToken);
-          setLoading(true);
           axios
             .post(
               `${process.env.REACT_APP_BASE_URL}authentication/token/validate_with_login?api_key=${process.env.REACT_APP_TMDB_KEY}`,
