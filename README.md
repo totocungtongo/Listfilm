@@ -21,6 +21,7 @@ FITUR TAMBAHAN:
 1. Menampilkan  avatar gravatar apabila login terjadi dan tidak mempunyai profile picture
 2. Menampilkan profile picture apabila user memiliki profile picture
 3. Menampilkan error alert apabila user memasukan password atau username yang salah
+4. Menampilkan loading spinners ketika fetching data pada saat user login
 
 MILESTONE
 Milestone 1
