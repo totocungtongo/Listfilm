@@ -76,7 +76,7 @@ function Login() {
                       window.location.assign("/profile");  
                       setTimeout(() => {
                       setLoading(false);             
-                      }, 500);
+                      }, 1000);
                     });
                  });
             });
