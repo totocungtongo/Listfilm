@@ -31,7 +31,7 @@ function App() {
           {data1.map((item, index) => {
             return (
               <Col key={index}>
-                <Card style={{ width: "20rem" }} className="cards">
+                <Card  className="cards">
                   <Card.Img
                     className="card-img-top"
                     variant="top"
