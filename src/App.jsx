@@ -14,7 +14,7 @@ function App() {
   const getData = () => {
     axios({
       method: "get",
-      url: "https://api.themoviedb.org/3/movie/popular?api_key=e37c79c53f9d7b138c1790e896ed6cb1&language=en-",
+      url: `${process.env.REACT_APP_BASE_URL}movie/popular?api_key=e37c79c53f9d7b138c1790e896ed6cb1&language=en-`,
     }).then(function (response) {
       setData1(response.data.results);
     });
